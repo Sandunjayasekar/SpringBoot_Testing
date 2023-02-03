@@ -1,6 +1,7 @@
 package com.tutorialOne.demoOne;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -22,5 +23,11 @@ public class StudentController {
         students.add(new Student("jalai","gopal"));
         students.add(new Student("buwa","noyu"));
         return students;
+    }
+
+    @GetMapping("/student/{firstName}/{lastName}")
+    public Student studentPathVariable(@PathVariable("firstName") String firstName,
+                                       @PathVariable("lastName") String lastName){
+        return new Student(firstName, lastName);
     }
 }
